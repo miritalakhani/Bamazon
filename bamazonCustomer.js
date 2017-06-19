@@ -1,5 +1,6 @@
 
 var mysql = require("mysql");
+var inquirer = require("inquirer");
 
 var connection = mysql.createConnection({
   host: "localhost",
@@ -35,9 +36,28 @@ function printNames(res) {
   console.log("-----------------------------------");
 }
 
-
-
 }
+
+
+
+var questions = [
+    {
+      type: 'input',
+      name: 'ID',
+      message: 'please enter the ID of product you would like to buy'
+    },
+
+    {
+      type: 'input',
+      name: 'units',
+      message: 'How many units you would like to buy?'
+    }
+  ]
+
+
+  inquirer.prompt(questions).then(function (answers) {
+  console.log(JSON.stringify(answers, null, '  '));
+  });
 
 
 });
