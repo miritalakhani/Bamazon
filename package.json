@@ -1,0 +1,14 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "SQL and Node",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mirita Lakhani",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.13.0"
+  }
+}
