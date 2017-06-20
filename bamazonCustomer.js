@@ -34,12 +34,15 @@ function printNames(res) {
       console.log(res[i].item_id + " | " + res[i].product_name + " | " + res[i].price );
     }
   console.log("-----------------------------------");
+
+  askquestion();
 }
 
+
 }
 
 
-
+function askquestion() {
 var questions = [
     {
       type: 'input',
@@ -58,6 +61,7 @@ var questions = [
   inquirer.prompt(questions).then(function (answers) {
   console.log(JSON.stringify(answers, null, '  '));
   });
+}
 
 
 });
