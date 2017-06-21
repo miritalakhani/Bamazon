@@ -59,9 +59,47 @@ var questions = [
 
 
   inquirer.prompt(questions).then(function (answers) {
-  console.log(JSON.stringify(answers, null, '  '));
+  //console.log(JSON.stringify(answers, null, '  '));
+
+
+  var id = parseInt(answers.ID);
+  var unit = parseInt(answers.units);
+
+
+  connection.query("SELECT * FROM products WHERE item_id = " + id, function(err, res) {
+    if (err) {
+      throw err;
+    }
+
+    console.log("Available Quantity: " + res[0].stock_quantity);
+    var available = res[0].stock_quantity;
+    var totalPrice = unit * res[0].price;
+
+    if(available > unit){
+      console.log("sucess!! you are able to purchase");
+
+    var newstock = available-unit;
+
+    connection.query("UPDATE products SET stock_quantity = " + newstock + " WHERE item_id = " + id, function(err, res) {
+    if (err) {
+      throw err;
+    }
+
+    console.log("Total price is: " + totalPrice);
+
+  });
+
+
+        }
+
+    else { console.log("Insuficient quantity!!");}
+  });
+
+
   });
 }
+
+
 
 
 });
